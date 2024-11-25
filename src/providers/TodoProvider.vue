@@ -1,8 +1,8 @@
 <script setup>
 import { provide } from 'vue'
-import { useTodoTemplate } from '../composables/useTodoTemplate'
+import { useTodoProvider } from '../composables/useTodoProvider'
 
-const { showTodoList, searchKeyword, addInputValue, handleAddTodo, handleDeleteTodo } = useTodoTemplate()
+const { showTodoList, searchKeyword, addInputValue, handleAddTodo, handleDeleteTodo } = useTodoProvider()
 
 provide('showTodoList', showTodoList)
 provide('searchKeyword', searchKeyword)

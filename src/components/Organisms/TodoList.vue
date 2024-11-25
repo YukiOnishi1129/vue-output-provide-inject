@@ -1,22 +1,14 @@
 <script setup>
-const { todoList } = defineProps({
-  todoList: {
-    type: Array,
-    required: true
-  }
-})
+import { inject } from 'vue'
 
-const emit = defineEmits(['onDeleteTodo'])
-
-const handleDeleteClick = (targetId, targetTitle) => {
-  emit('onDeleteTodo', targetId, targetTitle)
-}
+const showTodoList = inject('showTodoList')
+const handleDeleteTodo = inject('handleDeleteTodo')
 </script>
 
 <template>
   <ul class="list">
     <li
-      v-for="(todo, index) in todoList"
+      v-for="(todo, index) in showTodoList"
       :key="index"
       class="todo"
     >
@@ -24,7 +16,7 @@ const handleDeleteClick = (targetId, targetTitle) => {
       <font-awesome-icon
         class="far"
         icon="fa-trash"
-        @click="handleDeleteClick(todo.id, todo.title)"
+        @click="handleDeleteTodo(todo.id, todo.title)"
       />
     </li>
   </ul>

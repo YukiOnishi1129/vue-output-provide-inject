@@ -1,32 +1,32 @@
 <script setup>
+import { inject } from 'vue'
 import AddTodo from '../Organisms/AddTodo.vue'
 import TodoList from '../Organisms/TodoList.vue'
 import InputForm from '../Atoms/InputForm.vue'
 
-import { inject } from 'vue'
-
-const showTodoList = inject('showTodoList')
 const searchKeyword = inject('searchKeyword')
-const addInputValue = inject('addInputValue')
-const handleAddTodo = inject('handleAddTodo')
-const handleDeleteTodo = inject('handleDeleteTodo')
 </script>
 
 <template>
   <div class="container">
-    <h1 class="title">Todo List</h1>
+    <h1 class="title">
+      Todo List
+    </h1>
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo v-model:add-input-value="addInputValue" :on-add-todo="handleAddTodo" />
+    <AddTodo />
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
-    <InputForm v-model="searchKeyword" :placeholder="`Search Keyword`" />
+    <InputForm
+      v-model="searchKeyword"
+      :placeholder="`Search Keyword`"
+    />
   </section>
   <!-- Todo 一覧表示エリア -->
   <section class="common">
-    <TodoList :todo-list="showTodoList" @on-delete-todo="handleDeleteTodo" />
+    <TodoList />
   </section>
 </template>
 
